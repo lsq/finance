@@ -13,7 +13,6 @@
 10. browse to your tlbinf32.dll location, press "Next" after the wizard has detected 3 interfaces to expose
 11 That's it. You should see something like this:
 
-enter image description here
 
 Now you can use the same client code and it should work. Note the performance is not comparable however (out-of-process vs in-process).
 
