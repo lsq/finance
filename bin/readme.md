@@ -1,5 +1,5 @@
 # tlbinf32.dll in a 64bits .Net application
-## [install] (https://stackoverflow.com/questions/42569377/tlbinf32-dll-in-a-64bits-net-application)
+## [install](https://stackoverflow.com/questions/42569377/tlbinf32-dll-in-a-64bits-net-application)
 
 1. open Windows' "Component Services"
 2. open nodes to "My Computer/COM+ Applications"
