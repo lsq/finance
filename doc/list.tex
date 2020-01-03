@@ -1,0 +1,57 @@
+\documentclass{ctexart}
+% 中文乱数假文(Lorem ipsum)宏包
+\usepackage{zhlipsum}
+\usepackage{tabularx}
+\usepackage{media9}
+% ========自定义列表环境=======计数器
+\newcounter{mylist}
+% 列表环境定义
+\newenvironment{myitemize}{%
+  \begin{list}{\hspace{2em}\themylist 、}{%
+      \usecounter{mylist}%
+      \setlength{\topsep}{0pt}%
+      \setlength{\partopsep}{0pt}%
+      \setlength{\parsep}{0pt}%
+      \setlength{\itemsep}{0pt}%
+      \setlength{\leftmargin}{0pt}%
+      \setlength{\rightmargin}{0pt}%
+      \setlength{\labelsep}{0pt}%
+      \setlength{\itemindent}{2.0em}%
+    }
+  } {\end{list} }
+  
+\begin{document}
+% 默认itemize
+\zhlipsum[1]
+\begin{itemize}
+\item \zhlipsum[1]
+\item \zhlipsum[2]
+\end{itemize}
+% 手动分页
+\newpage
+% 自定义
+\zhlipsum[1]
+\begin{myitemize}
+\item \zhlipsum[1]  
+\item \zhlipsum[2]
+\end{myitemize}
+
+\section{表格}
+
+\begin{tabularx}{50mm}{l|X} \hline
+年份 & 探测目标 \\ \hline
+1959 & 苏联月球3号发回月球背面照片。\\
+1964 & 美国水手4号飞往火星。\\ \hline
+\end{tabularx}
+
+
+
+此处是视频文件
+\includemedia[
+  width=0.4\linewidth,
+  height=0.3\linewidth,
+  activate=pageopen,
+  addresource=a.MP4,
+  flashvars={source=a.MP4}]{}{VPlayer.swf}
+ \end{document}
+\end{document}
