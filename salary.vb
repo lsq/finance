@@ -28,7 +28,7 @@ Sub printkaoqin()
     For i = 2 To ThisWorkbook.Worksheets.Count
        
         'MsgBox ThisWorkbook.Worksheets(i).Name
-        Call gongshi(ThisWorkbook.Worksheets(i))
+        Call copykaoqin(ThisWorkbook.Worksheets(i))
     Next
     Application.ScreenUpdating = True
     Application.Calculation = xlCalculationAutomatic
@@ -136,7 +136,7 @@ Function isexistssheet(bookname As String) As Boolean
     isexistssheet = buer
 End Function
 Sub gongshi(ws As Worksheet)
-    Dim i As Integer, j As Integer, k As Integer, rq As String, xm As String
+    Dim i As Integer, j As Integer, k As Integer, rq As String, xm As String, flag As Boolean
     Dim arr() As Variant
     Dim brr() As Variant    ', crr As Variant
     Dim dy As Worksheet, xmrng As Range
@@ -178,7 +178,7 @@ Sub gongshi(ws As Worksheet)
                                 Range(Cells(4, i), Cells(43, i)).Font.Bold = True
                                 
                                 ' 设置列宽
-                                Columns(i).ColumnWidth = 3
+                                Columns(i).ColumnWidth = 7
                                 
                                 ' 合并标题
                                 If Range(numToString(i - 14) & "10").MergeArea.Count = 14 Then
@@ -364,8 +364,10 @@ Sub gongshi(ws As Worksheet)
                                     Call createPrinttb("打印表", ActiveWorkbook.Worksheets.Count)
                                 End If
                                 Set dy = ActiveWorkbook.Worksheets("打印表")
+                                flag = False
                                 
                                 If dy.Range("A1").CurrentRegion.Rows.Count = 1 Then
+                                    
                                     nextrow = 1
                                     nextcol = 1
                                     maxrow = 49
@@ -378,8 +380,9 @@ Sub gongshi(ws As Worksheet)
                                     With dy.UsedRange
                                         Set xmrng = .Find(xm, LookIn:=xlValues)
                                         If Not xmrng Is Nothing Then
-                                            maxrow = xmrng.Row + 48
-                                            curcol = xmrng.Column + 5
+                                            flag = True
+                                            maxrow = xmrng.Row
+                                            curcol = xmrng.Column
                                             
                                             'firstAddress = xmrng.Address
 '                                            Do
@@ -392,12 +395,17 @@ Sub gongshi(ws As Worksheet)
                                             curcol = dy.Cells(maxrow - 40, Columns.Count).End(xlToLeft).Column
                                         End If
                                     End With
-                                    If curcol = 15 Then
-                                        nextrow = maxrow - 48
-                                        nextcol = 17
-                                    ElseIf curcol = 31 Then
-                                        nextrow = ((maxrow - 49) / 54 + 1) * 54 + 1
-                                        nextcol = 1
+                                    If flag Then
+                                        nextrow = maxrow
+                                        nextcol = curcol - 9
+                                    Else
+                                        If curcol = 15 Then
+                                            nextrow = maxrow - 48
+                                            nextcol = 17
+                                        ElseIf curcol = 31 Then
+                                            nextrow = ((maxrow - 49) / 54 + 1) * 54 + 1
+                                            nextcol = 1
+                                        End If
                                     End If
                                             
                                             'nextrow = (maxcol - 49) / 54 + 1
@@ -436,7 +444,7 @@ Sub test_gs()
     Call gongshi(ActiveSheet)
 End Sub
 Sub copykaoqin(ws As Worksheet)
-    Dim i As Integer, j As Integer, xm As String
+    Dim i As Integer, j As Integer, xm As String, flag As Boolean
     
     Dim dy As Worksheet, xmrng As Range
     Dim maxrow As Integer, curcol As Integer, nextrow As Integer, nextcol As Integer
@@ -464,6 +472,7 @@ Sub copykaoqin(ws As Worksheet)
                                     Call createPrinttb("打印表", ActiveWorkbook.Worksheets.Count)
                                 End If
                                 Set dy = ActiveWorkbook.Worksheets("打印表")
+                                flag = False '打印表是否已存在
                                 
                                 If dy.Range("A1").CurrentRegion.Rows.Count = 1 Then
                                     nextrow = 1
@@ -478,8 +487,9 @@ Sub copykaoqin(ws As Worksheet)
                                     With dy.UsedRange
                                         Set xmrng = .Find(xm, LookIn:=xlValues)
                                         If Not xmrng Is Nothing Then
-                                            maxrow = xmrng.Row + 48
-                                            curcol = xmrng.Column + 5
+                                            flag = True
+                                            maxrow = xmrng.Row
+                                            curcol = xmrng.Column
                                             
                                             'firstAddress = xmrng.Address
 '                                            Do
@@ -492,12 +502,17 @@ Sub copykaoqin(ws As Worksheet)
                                             curcol = dy.Cells(maxrow - 40, Columns.Count).End(xlToLeft).Column
                                         End If
                                     End With
-                                    If curcol = 15 Then
-                                        nextrow = maxrow - 48
-                                        nextcol = 17
-                                    ElseIf curcol = 31 Then
-                                        nextrow = ((maxrow - 49) / 54 + 1) * 54 + 1
-                                        nextcol = 1
+                                    If flag Then
+                                        nextrow = maxrow
+                                        nextcol = curcol - 9
+                                    Else
+                                        If curcol = 15 Then
+                                            nextrow = maxrow - 48
+                                            nextcol = 17
+                                        ElseIf curcol = 31 Then
+                                            nextrow = ((maxrow - 49) / 54 + 1) * 54 + 1
+                                            nextcol = 1
+                                        End If
                                     End If
                                             
                                             'nextrow = (maxcol - 49) / 54 + 1
