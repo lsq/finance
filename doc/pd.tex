@@ -1,0 +1,92 @@
+\documentclass[12pt]{ctexart}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[top=1cm,bottom=2cm]{geometry}
+\setCJKmainfont{FangSong_GB2312}
+
+\newcounter{thirdlist}
+\newenvironment{thirdtitle}[1][\thethirdlist、]{%
+\begin{list}{#1}{\usecounter{thirdlist}\topsep=0ex\itemsep=0pt\parsep=0pt\partopsep=0pt%
+\itemindent=0em\leftmargin=8mm\rightmargin=0mm}}{\end{list}}
+\title{\heiti{2019年12月份盘点报告}}
+\date{}
+
+\AddEnumerateCounter{\chinese}{\chinese}{}
+
+\begin{document}
+\maketitle
+%\section{一、	盘点时间}
+\begin{enumerate}[label={\chinese*、},labelsep=0pt]
+ \item 盘点时间
+
+时间：2019年12月29日
+  %\item 格式美观
+
+
+\item 盘点仓库、仓库负责人及盘点人员
+
+\begin{tabular}{|c|l|l|l|}
+\hline
+\heiti{序号} & \heiti{仓库/库位} & \heiti{仓库/库位负责人} & \heiti{盘点人} \\\hline
+% \hline
+1 & 原材料仓 & Gavin & Gavin/Sansan/Kunka/Jenny\\
+\hline
+2 & 加芯仓 & Jeff & Jeff/Kunka \\
+\hline
+% 3 & 成品仓 & 待定 & 待定 & 待定\\
+% \hline
+\end{tabular}
+
+% \item 盘点流程
+
+% 1.	仓库在12月28日工作结束后所有仓位物料归位，各仓位负责人安排自盘。\\
+% 2.	12月29日盘点前K3系统不允许操作库存，财务人员导出库存数据。\\
+% 3.	盘点前由盘点人员准备好盘点工具、财务人员准备库存数据以便核对数据。\\
+% 4.	实施盘点：由仓库盘点人员清点，财务人员负责监盘，确保物料都经过清点并且数据正确录入，出现漏盘、数据录入错误要重新盘点。\\
+% 5.	盘点数据整理：财务人员整理汇总盘点数据。\\
+% 6.	数据比对：财务人员根据盘点数据与K3系统库存数据比对，比较差异，提供差异数据。\\
+% 7.	仓库根据盘点差异数据对差异部分进行复盘，找出差异原因，出具差异原因报告。\\
+% 8.	财务人员再次对差异原因进行确认，对漏盘进行复盘。\\
+% 9.	财务人员出具盘点报告\\
+\item 盘点差异数据
+本次盘点盘亏：48种物料，合计：2129324 PCS\\
+盘盈：56种物料，合计：1614050 PCS\\
+其中贴片电容、电阻部分差异比较大的为：\\
+\includegraphics[height=0.8\linewidth,width=\linewidth]{images/cy}
+其他差异部分详见：《2019年12月原材料盘点差异表》\\
+% 1、1-DR-02-009 盘亏160K\\
+% 2、1-DR-02-011 盘亏10K\\
+% 3、1-DR-02-010 盘盈478006\\
+% 4、1-DR-04-061 盘亏70K\\
+% 5、1-DZ-04-015 盘亏100K\\
+% 6、1-DZ-04-002 盘亏20K
+\includegraphics[height=0.5\linewidth,width=\linewidth]{images/pd}
+
+
+\item 本次盘点存在的问题
+
+以下几点为本次盘点中存在的主要问题：
+\begin{thirdtitle}
+\item 漏盘，少盘\\
+漏盘原因一是：备料单数据混乱，备料数据与系统备料清单不一致；\\
+原因二，盘点过程中盘点人员没有按盘点表对漏盘数据进行核对，对没有盘到的数据进行复盘。
+\item 贴片厂退回未入库，没有严格按退料流程退料，打单入库
+\item 无单领料，没有严格执行仓库物料出入库制度，按单作业，无单出
+库
+\item 一种物料，分两个料号录入系统，前期没有严格区分物料型号。
+\item 无料号，发现无料号物料，没有在系统及时地更新物料编码。
+\item 盘盈、盘亏\\
+这部分主要原因为系统数据未核对准确，另一部分原因为录入系统数据出现错误。
+\end{thirdtitle}
+\item 针对目前存货管理方法几点建议
+\begin{thirdtitle}
+	\item 仓库要加强物料安全意识，严格按《物料管理制度》出入库；严禁非相关人员出入仓库，无单领用物料；
+	\item 物控要严格按单操作K3系统，对系统数据的准确性负责，对于不一致的物料要与仓库管理人员进行核对；每周定期盘点核对出现不一致的物料。
+	\item 盘点人员要提前按物料种类导出并打印《盘点表》，盘点过程中要对没有盘点到的物料主动提出复盘，不得漏盘，少盘，对有盘点中有疑问的物料应及时通知仓库管理人员进行核查，确保盘点工作的准确性。
+	\item 对没有料号的物料，要及时通知、添加料号。串料号的要及时调整数据，同一种物料多个料号的要提前导出数据合并后再禁用一个重复料号。
+	
+\end{thirdtitle}
+% \flushright{\date{\today}\\深圳市巴达木科技有限公司}
+\end{enumerate}
+
+\end{document}
